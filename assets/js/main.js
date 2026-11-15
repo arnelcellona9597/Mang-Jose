@@ -327,6 +327,14 @@
   /* ---------- Contact form ---------- */
   const form = $('#contact-form');
   if (form) {
+    /* Order buttons pre-fill the message with the chosen item */
+    const msgBox = $('#f-message');
+    msgBox.addEventListener('input', e => { if (e.isTrusted) delete msgBox.dataset.prefilled; });
+    $$('[data-order]').forEach(a => a.addEventListener('click', () => {
+      if (msgBox.value.trim() && !msgBox.dataset.prefilled) return; // never overwrite the visitor's own text
+      msgBox.value = "Hi Mang Jose! I'd like to order: " + a.dataset.order + ". ";
+      msgBox.dataset.prefilled = '1';
+    }));
     $('#f-ts').value = Date.now();
     const status = $('.form__status', form);
     const rules = {
