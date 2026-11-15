@@ -399,7 +399,8 @@
           <p class="eyebrow reveal">Gallery</p>
           <h2 class="section-title reveal" id="gallery-title">A Feast for the <em>Eyes</em></h2>
         </header>
-        <div class="gallery__grid reveal-stagger">
+        <div class="sl-wrap" role="region" aria-roledescription="carousel" aria-label="Gallery">
+          <div class="gallery__grid sl-track reveal-stagger" tabindex="0" aria-label="Gallery photos. Swipe or use the arrow keys to browse.">
           <button class="g-item g-item--tall" data-full="assets/img/macro.webp"><img src="assets/img/macro.webp" alt="Close-up of crunchy fried chicken skin" width="800" height="1200" loading="lazy"></button>
           <button class="g-item" data-full="assets/img/chicken-pastil-rice.webp"><img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken and pastil rice plate" width="1200" height="721" loading="lazy"></button>
           <button class="g-item" data-full="assets/img/calamansi.webp"><img src="assets/img/calamansi.webp" alt="Fried chicken with soy-calamansi dip and chili" width="900" height="600" loading="lazy"></button>
@@ -413,6 +414,15 @@
           <button class="g-item" data-full="assets/img/hero-meal.webp"><img src="assets/img/hero-meal.webp" alt="Fried chicken and rice meal" width="1536" height="864" loading="lazy"></button>
           <button class="g-item" data-full="assets/img/drumstick-rack.webp"><img src="assets/img/drumstick-rack.webp" alt="Fresh fried drumsticks resting on a rack" width="900" height="600" loading="lazy"></button>
         </div>
+          <div class="sl-ui sl-ui--bar">
+            <div class="sl-bar" aria-hidden="true"><i></i></div>
+            <div class="sl-nav">
+              <button type="button" class="sl-btn" data-dir="-1" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <span class="sl-count" aria-live="polite"><b>01</b> / 12</span>
+              <button type="button" class="sl-btn" data-dir="1" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+          </div>
       </div>
     </section>
 

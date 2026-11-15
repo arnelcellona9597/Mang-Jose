@@ -191,7 +191,7 @@
   const phone = window.matchMedia('(max-width: 640px)');
   const sliders = $$('.sl-wrap').map(wrap => {
     const track = $('.sl-track', wrap);
-    const cards = $$(':scope > li', track), dotBtns = $$('.sl-dots button', wrap), navBtns = $$('.sl-btn', wrap);
+    const cards = [...track.children], dotBtns = $$('.sl-dots button', wrap), navBtns = $$('.sl-btn', wrap);
     const countEl = $('.sl-count b', wrap), n = cards.length;
     const stepW = () => (cards[1].offsetLeft - cards[0].offsetLeft) || 1;
     const maxScroll = () => Math.max(1, track.scrollWidth - track.clientWidth);
@@ -204,6 +204,7 @@
       const idx = clamp(Math.round(pos), 0, n - 1);
       dotBtns.forEach((d, i) => { d.classList.toggle('is-on', i === idx); i === idx ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'); });
       if (countEl) countEl.textContent = String(idx + 1).padStart(2, '0');
+      $('.sl-bar', wrap)?.style.setProperty('--p', ((idx + 1) / n).toFixed(3));
       navBtns[0].disabled = idx === 0;
       navBtns[1].disabled = idx === n - 1;
     };
