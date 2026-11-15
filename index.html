@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mang Jose Fried Chicken Corner | Crispy Fried Chicken in Davao City</title>
+  <meta name="description" content="Mang Jose Fried Chicken Corner serves golden, crispy fried chicken, chicken pastil and rice meals in Talomo and Tugbok, Davao City. Fried chicken from ₱40, pastil ₱160 per bottle.">
+  <meta name="keywords" content="Mang Jose, fried chicken Davao, crispy fried chicken, chicken pastil, Talomo, Tugbok, Davao City food">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Mang Jose Fried Chicken Corner">
+  <meta name="theme-color" content="#0c0806">
+  <link rel="canonical" href="https://www.mangjosefriedchicken.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mang Jose Fried Chicken Corner">
+  <meta property="og:title" content="Mang Jose Fried Chicken Corner | Crispy Fried Chicken in Davao City">
+  <meta property="og:description" content="Golden, crispy fried chicken, chicken pastil and rice meals. Two branches in Davao City.">
+  <meta property="og:url" content="https://www.mangjosefriedchicken.com/">
+  <meta property="og:image" content="https://www.mangjosefriedchicken.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mang Jose logo beside a pile of crispy fried chicken">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mang Jose Fried Chicken Corner">
+  <meta name="twitter:description" content="Golden, crispy fried chicken, chicken pastil and rice meals in Davao City.">
+  <meta name="twitter:image" content="https://www.mangjosefriedchicken.com/assets/img/og-image.jpg">
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+
+  <link rel="preload" as="image" href="assets/img/hero-chicken.webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.mangjosefriedchicken.com/#org",
+        "name": "Mang Jose Fried Chicken Corner",
+        "url": "https://www.mangjosefriedchicken.com/",
+        "logo": "https://www.mangjosefriedchicken.com/assets/img/logo.png",
+        "image": "https://www.mangjosefriedchicken.com/assets/img/og-image.jpg",
+        "slogan": "Crispy Fried Chicken Corner",
+        "sameAs": ["https://www.facebook.com/jose.laroga.iii"],
+        "subOrganization": [
+          {"@id": "https://www.mangjosefriedchicken.com/#talomo"},
+          {"@id": "https://www.mangjosefriedchicken.com/#tugbok"}
+        ]
+      },
+      {
+        "@type": "Restaurant",
+        "@id": "https://www.mangjosefriedchicken.com/#talomo",
+        "name": "Mang Jose Fried Chicken Corner – Talomo (Main Branch)",
+        "parentOrganization": {"@id": "https://www.mangjosefriedchicken.com/#org"},
+        "image": "https://www.mangjosefriedchicken.com/assets/img/store-front.webp",
+        "servesCuisine": ["Filipino", "Fried Chicken"],
+        "priceRange": "₱",
+        "currenciesAccepted": "PHP",
+        "hasMap": "https://www.google.com/maps/place/Mang+jose+fried+chicken+corner/data=!4m2!3m1!1s0x0:0x5190e2430e9d2e26",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Guillermo E. Torres St",
+          "addressLocality": "Talomo, Davao City",
+          "addressRegion": "Davao del Sur",
+          "postalCode": "8000",
+          "addressCountry": "PH"
+        },
+        "hasMenu": {"@id": "https://www.mangjosefriedchicken.com/#menu"}
+      },
+      {
+        "@type": "Restaurant",
+        "@id": "https://www.mangjosefriedchicken.com/#tugbok",
+        "name": "Mang Jose Fried Chicken Corner – Tugbok Branch",
+        "parentOrganization": {"@id": "https://www.mangjosefriedchicken.com/#org"},
+        "image": "https://www.mangjosefriedchicken.com/assets/img/branch-tugbok.webp",
+        "servesCuisine": ["Filipino", "Fried Chicken"],
+        "priceRange": "₱",
+        "currenciesAccepted": "PHP",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Del Rosario St., Phase 1, Barangay Sto. Niño",
+          "addressLocality": "Tugbok District, Davao City",
+          "addressRegion": "Davao del Sur",
+          "addressCountry": "PH"
+        },
+        "hasMenu": {"@id": "https://www.mangjosefriedchicken.com/#menu"}
+      },
+      {
+        "@type": "Menu",
+        "@id": "https://www.mangjosefriedchicken.com/#menu",
+        "name": "Mang Jose Menu",
+        "hasMenuSection": {
+          "@type": "MenuSection",
+          "name": "Fried Chicken & Pastil",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Fried Chicken + Rice", "description": "Crispy golden fried chicken served with steamed rice."},
+            {"@type": "MenuItem", "name": "Fried Chicken + Chicken Pastil + Rice", "description": "Fried chicken and savory chicken pastil over steamed rice."},
+            {"@type": "MenuItem", "name": "Fried Chicken (per piece)", "offers": {"@type": "Offer", "price": "40", "priceCurrency": "PHP"}},
+            {"@type": "MenuItem", "name": "Special Chicken Pastil (per bottle)", "description": "Original and Spicy variants.", "offers": {"@type": "Offer", "price": "160", "priceCurrency": "PHP"}}
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.mangjosefriedchicken.com/#website",
+        "url": "https://www.mangjosefriedchicken.com/",
+        "name": "Mang Jose Fried Chicken Corner",
+        "inLanguage": "en-PH",
+        "publisher": {"@id": "https://www.mangjosefriedchicken.com/#org"}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="preloader" aria-hidden="true">
+    <img src="assets/img/logo.webp" alt="" width="240" height="151">
+    <span class="preloader__bar"></span>
+  </div>
+
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="top">
+    <div class="site-header__inner container">
+      <a href="#top" class="brand" aria-label="Mang Jose Fried Chicken Corner, back to top">
+        <img src="assets/img/logo.webp" alt="Mang Jose" width="480" height="302" class="brand__logo">
+        <span class="brand__text">Fried Chicken<br><em>Corner</em></span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <ul class="nav__list" id="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#branches">Branches</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#menu" class="btn btn--gold btn--sm header-cta magnetic"><span>Order Now</span></a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <span class="site-header__line" aria-hidden="true"></span>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO SLIDER ===================== -->
+    <section class="hero" aria-roledescription="carousel" aria-label="Featured dishes">
+      <div class="hero__slides">
+        <article class="hero__slide is-active" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="hero__bg" style="background-image:url('assets/img/hero-chicken.webp')" role="img" aria-label="A pile of golden crispy fried chicken on a dark slate board"></div>
+          <div class="hero__content container">
+            <p class="eyebrow">Davao City · Since Day One</p>
+            <h1 class="hero__title"><span class="split">Golden.</span> <span class="split">Crispy.</span> <span class="split gold">Legendary.</span></h1>
+            <p class="hero__lead">Hand-battered fried chicken, cooked fresh at the corner.</p>
+            <div class="hero__actions">
+              <a href="#menu" class="btn btn--gold magnetic"><span>Explore the Menu</span></a>
+              <a href="#branches" class="btn btn--ghost magnetic"><span>Find a Branch</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="hero__slide" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="hero__bg" style="background-image:url('assets/img/hero-meal.webp')" role="img" aria-label="Fried chicken with steamed rice on a black plate"></div>
+          <div class="hero__content container">
+            <p class="eyebrow">The Classic Meal</p>
+            <h2 class="hero__title"><span class="split">Chicken</span> <span class="split">&amp; Rice,</span> <span class="split gold">Perfected.</span></h2>
+            <p class="hero__lead">Comfort food, done the Mang Jose way.</p>
+            <div class="hero__actions">
+              <a href="#menu" class="btn btn--gold magnetic"><span>See Meals</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="hero__slide" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="hero__bg" style="background-image:url('assets/img/hero-pastil.webp')" role="img" aria-label="A jar of shredded chicken pastil with rice, garlic and chili"></div>
+          <div class="hero__content container">
+            <p class="eyebrow">Special Chicken Pastil</p>
+            <h2 class="hero__title"><span class="split">Bottled</span> <span class="split">Flavor,</span> <span class="split gold">₱160.</span></h2>
+            <p class="hero__lead">Original or Spicy. Take home the taste.</p>
+            <div class="hero__actions">
+              <a href="#contact" class="btn btn--gold magnetic"><span>Reserve a Bottle</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero__controls container">
+        <div class="hero__dots" role="tablist" aria-label="Choose slide">
+          <button role="tab" aria-selected="true" aria-label="Slide 1"><span></span></button>
+          <button role="tab" aria-selected="false" aria-label="Slide 2"><span></span></button>
+          <button role="tab" aria-selected="false" aria-label="Slide 3"><span></span></button>
+        </div>
+        <div class="hero__arrows">
+          <button class="hero__arrow" data-dir="-1" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="hero__pause" aria-label="Pause slideshow" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14"/><path class="i-play" d="M7 5l12 7-12 7z"/></svg></button>
+          <button class="hero__arrow" data-dir="1" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll" aria-label="Scroll to About section"><span></span></a>
+    </section>
+
+    <!-- ===================== MARQUEE ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Crispy</span><i>✦</i><span>Golden</span><i>✦</i><span>Juicy</span><i>✦</i><span>Fresh Daily</span><i>✦</i><span>₱40 per piece</span><i>✦</i><span>Chicken Pastil</span><i>✦</i>
+        <span>Crispy</span><i>✦</i><span>Golden</span><i>✦</i><span>Juicy</span><i>✦</i><span>Fresh Daily</span><i>✦</i><span>₱40 per piece</span><i>✦</i><span>Chicken Pastil</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__media reveal" data-reveal="left">
+          <figure class="about__img about__img--main tilt">
+            <img src="assets/img/store-front.webp" alt="Mang Jose Fried Chicken Corner storefront at night with its glowing sign" width="1000" height="1333" loading="lazy">
+          </figure>
+          <figure class="about__img about__img--float tilt" data-parallax="-0.12">
+            <img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken with two servings of rice topped with chicken pastil" width="1200" height="721" loading="lazy">
+          </figure>
+          <div class="about__badge" data-parallax="0.08">
+            <strong>2</strong><span>Branches<br>in Davao</span>
+          </div>
+        </div>
+
+        <div class="about__copy">
+          <p class="eyebrow reveal">Our Story</p>
+          <h2 class="section-title reveal" id="about-title">A Corner Built on <em>Crunch</em></h2>
+          <p class="reveal">From a humble corner in Talomo, Mang Jose serves fried chicken the way Davao loves it: shatter-crisp outside, juicy inside, always fresh.</p>
+          <ul class="about__points reveal-stagger">
+            <li><span class="ico" aria-hidden="true">🔥</span><div><strong>Cooked to order</strong><small>Fresh from the fryer</small></div></li>
+            <li><span class="ico" aria-hidden="true">🍗</span><div><strong>₱40 a piece</strong><small>Premium taste, honest price</small></div></li>
+            <li><span class="ico" aria-hidden="true">🫙</span><div><strong>House-made pastil</strong><small>Original &amp; Spicy</small></div></li>
+          </ul>
+          <div class="stats reveal-stagger">
+            <div class="stat"><strong data-count="2">0</strong><span>Branches</span></div>
+            <div class="stat"><strong data-count="40" data-prefix="₱">0</strong><span>Per piece</span></div>
+            <div class="stat"><strong data-count="100" data-suffix="%">0</strong><span>Fresh daily</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SIGNATURE / 3D ===================== -->
+    <section class="signature" aria-labelledby="sig-title">
+      <div class="signature__bgword" aria-hidden="true" data-parallax-x="0.25">CRUNCH</div>
+      <div class="container signature__grid">
+        <div class="signature__stage" aria-hidden="true">
+          <div class="orbit"><span></span><span></span><span></span></div>
+          <img src="assets/img/drumstick-cut.webp" alt="" width="800" height="800" class="signature__drum" loading="lazy">
+        </div>
+        <div class="signature__copy">
+          <p class="eyebrow reveal">The Signature</p>
+          <h2 class="section-title reveal" id="sig-title">Crunch You Can <em>Hear</em></h2>
+          <p class="reveal">Every piece is seasoned, battered and fried until it turns that perfect shade of gold.</p>
+          <a href="#menu" class="btn btn--gold magnetic reveal"><span>Taste It</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTS ===================== -->
+    <section class="menu section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow reveal">The Menu</p>
+          <h2 class="section-title reveal" id="menu-title">Made for <em>Cravings</em></h2>
+        </header>
+
+        <ul class="products reveal-stagger">
+          <li class="product tilt">
+            <div class="product__img"><img src="assets/img/hero-meal.webp" alt="Crispy fried chicken served with steamed rice" width="1536" height="864" loading="lazy"></div>
+            <div class="product__body">
+              <span class="product__tag">Best Seller</span>
+              <h3>Fried Chicken + Rice</h3>
+              <p>The everyday classic.</p>
+            </div>
+            <span class="product__shine" aria-hidden="true"></span>
+          </li>
+          <li class="product tilt">
+            <div class="product__img"><img src="assets/img/combo-pastil.webp" alt="Fried chicken with rice topped with chicken pastil" width="900" height="900" loading="lazy"></div>
+            <div class="product__body">
+              <span class="product__tag">Combo</span>
+              <h3>Chicken + Pastil + Rice</h3>
+              <p>Double the chicken, double the joy.</p>
+            </div>
+            <span class="product__shine" aria-hidden="true"></span>
+          </li>
+          <li class="product tilt">
+            <div class="product__img"><img src="assets/img/drumstick.webp" alt="A single crispy fried chicken drumstick" width="900" height="900" loading="lazy"></div>
+            <div class="product__body">
+              <span class="product__tag">Ala Carte</span>
+              <h3>Fried Chicken</h3>
+              <p class="product__price"><span class="sr-only">Price: </span>₱40 <small>/ piece</small></p>
+            </div>
+            <span class="product__shine" aria-hidden="true"></span>
+          </li>
+          <li class="product tilt">
+            <div class="product__img"><img src="assets/img/pastil-jars.webp" alt="Three jars of Mang Jose Special Chicken Pastil, Original and Spicy" width="413" height="735" loading="lazy" class="contain"></div>
+            <div class="product__body">
+              <span class="product__tag">Take Home</span>
+              <h3>Chicken Pastil</h3>
+              <p class="product__price"><span class="sr-only">Price: </span>₱160 <small>/ bottle</small></p>
+            </div>
+            <span class="product__shine" aria-hidden="true"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow reveal">Gallery</p>
+          <h2 class="section-title reveal" id="gallery-title">A Feast for the <em>Eyes</em></h2>
+        </header>
+        <div class="gallery__grid reveal-stagger">
+          <button class="g-item g-item--tall" data-full="assets/img/macro.webp"><img src="assets/img/macro.webp" alt="Close-up of crunchy fried chicken skin" width="800" height="1200" loading="lazy"></button>
+          <button class="g-item" data-full="assets/img/chicken-pastil-rice.webp"><img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken and pastil rice plate" width="1200" height="721" loading="lazy"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/store-front.webp"><img src="assets/img/store-front.webp" alt="Talomo branch storefront at night" width="1000" height="1333" loading="lazy"></button>
+          <button class="g-item" data-full="assets/img/hero-chicken.webp"><img src="assets/img/hero-chicken.webp" alt="Pile of golden fried chicken" width="1536" height="864" loading="lazy"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/honey.webp"><img src="assets/img/honey.webp" alt="Fried chicken basket with honey drizzle" width="800" height="1200" loading="lazy"></button>
+          <button class="g-item" data-full="assets/img/hero-pastil.webp"><img src="assets/img/hero-pastil.webp" alt="Chicken pastil jar with rice" width="1536" height="864" loading="lazy"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/store-street.webp"><img src="assets/img/store-street.webp" alt="Customers lining up at the Mang Jose counter" width="1000" height="1333" loading="lazy"></button>
+          <button class="g-item" data-full="assets/img/combo-pastil.webp"><img src="assets/img/combo-pastil.webp" alt="Chicken, rice and pastil, top view" width="900" height="900" loading="lazy"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/pastil-jars.webp"><img src="assets/img/pastil-jars.webp" alt="Stack of Special Chicken Pastil jars" width="413" height="735" loading="lazy"></button>
+          <button class="g-item" data-full="assets/img/hero-meal.webp"><img src="assets/img/hero-meal.webp" alt="Fried chicken and rice meal" width="1536" height="864" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BRANCHES ===================== -->
+    <section class="branches section" id="branches" aria-labelledby="branches-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow reveal">Visit Us</p>
+          <h2 class="section-title reveal" id="branches-title">Two Corners, <em>One Taste</em></h2>
+        </header>
+        <div class="branches__grid reveal-stagger">
+          <article class="branch tilt">
+            <div class="branch__img"><img src="assets/img/store-night.webp" alt="Talomo main branch seen from across the street" width="1000" height="1333" loading="lazy" style="object-position:50% 62%"></div>
+            <div class="branch__body">
+              <span class="branch__no">01</span>
+              <h3>Talomo <small>Main Branch</small></h3>
+              <address>Guillermo E. Torres St, Talomo,<br>Davao City, 8000 Davao del Sur</address>
+              <a class="link-arrow" href="https://www.google.com/maps/place/Mang+jose+fried+chicken+corner/data=!4m2!3m1!1s0x0:0x5190e2430e9d2e26" target="_blank" rel="noopener">Get Directions<span class="sr-only"> to Talomo branch (opens in new tab)</span></a>
+            </div>
+          </article>
+          <article class="branch tilt">
+            <div class="branch__img"><img src="assets/img/branch-tugbok.webp" alt="Tugbok branch with its lit Mang Jose sign" width="382" height="510" loading="lazy"></div>
+            <div class="branch__body">
+              <span class="branch__no">02</span>
+              <h3>Tugbok <small>Sto. Niño</small></h3>
+              <address>Del Rosario St., Phase 1, Brgy. Sto. Niño,<br>Tugbok District, Davao City</address>
+              <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=Del+Rosario+St+Sto+Nino+Tugbok+Davao+City" target="_blank" rel="noopener">Get Directions<span class="sr-only"> to Tugbok branch (opens in new tab)</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="contact__bg" aria-hidden="true" style="background-image:url('assets/img/hero-chicken.webp')"></div>
+      <div class="container contact__grid">
+        <div class="contact__copy">
+          <p class="eyebrow reveal">Get in Touch</p>
+          <h2 class="section-title reveal" id="contact-title">Let's Talk <em>Chicken</em></h2>
+          <p class="reveal">Bulk orders, events, pastil reservations or a simple hello.</p>
+          <ul class="contact__list reveal-stagger">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Talomo &amp; Tugbok, Davao City</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><a href="https://www.facebook.com/jose.laroga.iii" target="_blank" rel="noopener">Message us on Facebook<span class="sr-only"> (opens in new tab)</span></a></li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="contact-form" action="contact.php" method="post" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <input type="text" id="f-name" name="name" required autocomplete="name" placeholder=" " maxlength="80">
+              <label for="f-name">Full name <span aria-hidden="true">*</span></label>
+              <span class="field__error" id="f-name-err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <input type="email" id="f-email" name="email" required autocomplete="email" placeholder=" " maxlength="120">
+              <label for="f-email">Email <span aria-hidden="true">*</span></label>
+              <span class="field__error" id="f-email-err" aria-live="polite"></span>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder=" " maxlength="30">
+              <label for="f-phone">Phone</label>
+            </div>
+            <div class="field field--select">
+              <select id="f-branch" name="branch">
+                <option value="Talomo (Main)">Talomo (Main)</option>
+                <option value="Tugbok (Sto. Niño)">Tugbok (Sto. Niño)</option>
+              </select>
+              <label for="f-branch">Branch</label>
+            </div>
+          </div>
+          <div class="field">
+            <textarea id="f-message" name="message" rows="4" required placeholder=" " maxlength="2000"></textarea>
+            <label for="f-message">Your message <span aria-hidden="true">*</span></label>
+            <span class="field__error" id="f-message-err" aria-live="polite"></span>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Leave this empty</label>
+            <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="ts" id="f-ts">
+          <button type="submit" class="btn btn--gold btn--block magnetic"><span>Send Message</span></button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <canvas class="embers" aria-hidden="true"></canvas>
+    <div class="container site-footer__top">
+      <div class="site-footer__brand">
+        <img src="assets/img/logo.webp" alt="Mang Jose Fried Chicken Corner" width="480" height="302" loading="lazy">
+        <p>Crispy fried chicken &amp; chicken pastil, served with love in Davao City.</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Footer">
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2>Branches</h2>
+        <ul>
+          <li>Guillermo E. Torres St, Talomo</li>
+          <li>Del Rosario St., Sto. Niño, Tugbok</li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h2>Follow</h2>
+        <a class="social magnetic" href="https://www.facebook.com/jose.laroga.iii" target="_blank" rel="noopener" aria-label="Facebook (opens in new tab)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="site-footer__giant" aria-hidden="true"><span>MANG JOSE</span></div>
+    <div class="container site-footer__bottom">
+      <p>© <span id="year">2026</span> Mang Jose Fried Chicken Corner. All rights reserved.</p>
+      <a href="#top" class="to-top magnetic" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="lightbox__close" aria-label="Close image viewer">×</button>
+    <button class="lightbox__nav lightbox__prev" aria-label="Previous image">‹</button>
+    <img src="" alt="">
+    <button class="lightbox__nav lightbox__next" aria-label="Next image">›</button>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
