@@ -178,10 +178,27 @@
   }, { threshold: 0.6 });
   $$('[data-count]').forEach(el => countIO.observe(el));
 
+  /* ---------- Franchise: flip cards + timeline ---------- */
+  $$('.flip').forEach(b => b.addEventListener('click', () => {
+    const on = b.classList.toggle('is-flipped');
+    b.setAttribute('aria-pressed', String(on));
+  }));
+  const stepEls = $$('.step');
+  if (reduced) {
+    stepEls.forEach(s => s.classList.add('is-lit'));
+    $('.steps')?.style.setProperty('--jp', '1');
+  } else {
+    const stepIO = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-lit'); stepIO.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -38% 0px', threshold: 0.2 });
+    stepEls.forEach(s => stepIO.observe(s));
+  }
+
   /* ---------- Parallax + footer lift ---------- */
   const parEls = $$('[data-parallax]');
   const parX = $$('[data-parallax-x]');
   const foot = $('.foot');
+  const stack = $('.fr-stack'), stage = $('.fr-stage'), steps = $('.steps');
   function parallax() {
     if (reduced) return;
     const vh = innerHeight;
@@ -194,6 +211,14 @@
       const r = el.parentElement.getBoundingClientRect();
       el.style.setProperty('--px', `${(r.top - vh / 2) * +el.dataset.parallaxX}px`);
     });
+    if (stack && stage) {
+      const r = stage.getBoundingClientRect();
+      stack.style.setProperty('--sp', clamp((vh - r.top) / (vh + r.height), 0, 1).toFixed(3));
+    }
+    if (steps) {
+      const r = steps.getBoundingClientRect();
+      steps.style.setProperty('--jp', clamp((vh * 0.62 - r.top) / r.height, 0, 1).toFixed(3));
+    }
     if (foot) {
       const r = foot.getBoundingClientRect();
       const p = clamp((vh - r.top) / r.height, 0, 1);
@@ -327,14 +352,6 @@
   /* ---------- Contact form ---------- */
   const form = $('#contact-form');
   if (form) {
-    /* Order buttons pre-fill the message with the chosen item */
-    const msgBox = $('#f-message');
-    msgBox.addEventListener('input', e => { if (e.isTrusted) delete msgBox.dataset.prefilled; });
-    $$('[data-order]').forEach(a => a.addEventListener('click', () => {
-      if (msgBox.value.trim() && !msgBox.dataset.prefilled) return; // never overwrite the visitor's own text
-      msgBox.value = "Hi Mang Jose! I'd like to order: " + a.dataset.order + ". ";
-      msgBox.dataset.prefilled = '1';
-    }));
     $('#f-ts').value = Date.now();
     const status = $('.form__status', form);
     const rules = {
