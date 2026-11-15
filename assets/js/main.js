@@ -191,6 +191,38 @@
     const on = b.classList.toggle('is-flipped');
     b.setAttribute('aria-pressed', String(on));
   }));
+  /* Advantage slider (phones): dots, arrows, counter, depth */
+  const flipsEl = $('.flips');
+  if (flipsEl) {
+    const phone = window.matchMedia('(max-width: 640px)');
+    const cards = $$('li', flipsEl), dotBtns = $$('.flips-dots button'), navBtns = $$('.flips-btn');
+    const countEl = $('.flips-count b'), n = cards.length;
+    const stepW = () => (cards[1].offsetLeft - cards[0].offsetLeft) || 1;
+    const maxScroll = () => Math.max(1, flipsEl.scrollWidth - flipsEl.clientWidth);
+    let busy = false;
+    const update = () => {
+      busy = false;
+      if (!phone.matches) { cards.forEach(c => c.style.removeProperty('--d')); return; }
+      const pos = clamp(flipsEl.scrollLeft / maxScroll(), 0, 1) * (n - 1);
+      cards.forEach((c, i) => c.style.setProperty('--d', clamp(Math.abs(i - pos), 0, 1).toFixed(3)));
+      const idx = clamp(Math.round(pos), 0, n - 1);
+      dotBtns.forEach((d, i) => { d.classList.toggle('is-on', i === idx); i === idx ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'); });
+      if (countEl) countEl.textContent = String(idx + 1).padStart(2, '0');
+      navBtns[0].disabled = idx === 0;
+      navBtns[1].disabled = idx === n - 1;
+    };
+    const goTo = i => flipsEl.scrollTo({ left: clamp(i, 0, n - 1) * stepW(), behavior: reduced ? 'auto' : 'smooth' });
+    flipsEl.addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(update); } }, { passive: true });
+    navBtns.forEach(b => b.addEventListener('click', () => {
+      const pos = clamp(flipsEl.scrollLeft / maxScroll(), 0, 1) * (n - 1);
+      goTo(Math.round(pos) + Number(b.dataset.dir));
+    }));
+    dotBtns.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+    window.addEventListener('resize', update);
+    phone.addEventListener?.('change', update);
+    update();
+  }
+
   const stepEls = $$('.step');
   if (reduced) {
     stepEls.forEach(s => s.classList.add('is-lit'));

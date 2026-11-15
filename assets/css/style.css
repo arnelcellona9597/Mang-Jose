@@ -456,6 +456,37 @@ address { font-style: normal; }
 .flip__text { position: relative; font-size: 1rem; line-height: 1.55; font-weight: 500; }
 .flip:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 5px; border-radius: var(--radius); }
 
+/* ---------- Advantage slider (phones) ---------- */
+.flips-ui { display: none; }
+@media (max-width: 640px) {
+  .flips { position: relative; display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-inline: -16px; padding: 10px 16px 24px; }
+  .flips::-webkit-scrollbar { display: none; }
+  .flips > li { flex: 0 0 80%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .flip { height: 304px; transform: scale(calc(1 - var(--d, 0) * .07)); opacity: calc(1 - var(--d, 0) * .45); transform-origin: 50% 60%; }
+  .flips:focus-visible { outline: 2px solid var(--gold-2); outline-offset: -4px; border-radius: var(--radius); }
+  .flips-ui { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 4px; }
+  .flips-dots { display: flex; align-items: center; gap: 2px; }
+  .flips-dots button { position: relative; width: 22px; height: 44px; padding: 0; border: 0; background: none; }
+  .flips-dots button::before { content: ""; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 999px; background: rgba(217,180,90,.3); transition: width .5s var(--ease), margin .5s var(--ease), background .4s; }
+  .flips-dots button.is-on::before { width: 22px; margin-left: -11px; background: var(--gold-grad); }
+  .flips-nav { display: flex; align-items: center; gap: 12px; }
+  .flips-btn { width: 46px; height: 46px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid var(--line); background: rgba(12,8,6,.6); transition: background .3s, border-color .3s, opacity .3s, transform .3s var(--ease); -webkit-tap-highlight-color: transparent; }
+  .flips-btn svg { width: 18px; height: 18px; fill: none; stroke: var(--gold-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .flips-btn:active { transform: scale(.92); background: var(--gold); }
+  .flips-btn:active svg { stroke: #1a1006; }
+  .flips-btn:disabled { opacity: .3; }
+  .flips-count { min-width: 3.9em; text-align: center; font-size: .78rem; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+  .flips-count b { color: var(--gold-2); font-family: var(--serif); font-size: 1.25rem; letter-spacing: 0; }
+}
+@media (max-width: 360px) {
+  .flips-ui { gap: 8px; }
+  .flips-dots button { width: 16px; }
+  .flips-dots button.is-on::before { width: 18px; margin-left: -9px; }
+  .flips-nav { gap: 6px; }
+  .flips-btn { width: 42px; height: 42px; }
+  .flips-count { min-width: 3.4em; font-size: .7rem; letter-spacing: .06em; white-space: nowrap; }
+}
+
 /* ---------- Journey: scroll-driven timeline ---------- */
 .journey { overflow: hidden; background: var(--bg-2); border-block: 1px solid var(--line); }
 .steps { --jp: 0; position: relative; display: grid; gap: 26px; max-width: 880px; margin-inline: auto; padding-left: 56px; }

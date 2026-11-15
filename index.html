@@ -485,7 +485,8 @@
             <h2 class="section-title reveal" id="adv-title">Built to <em>Share</em></h2>
             <p class="section-lead reveal">Everything a new corner needs to serve the same golden crunch.</p>
           </header>
-          <ul class="flips reveal-stagger">
+          <div class="flips-wrap" role="region" aria-roledescription="carousel" aria-label="Franchise advantages">
+            <ul class="flips reveal-stagger" tabindex="0" aria-label="Franchise advantages. Swipe or use the arrow keys to browse.">
             <li><button class="flip" type="button" aria-pressed="false"><span class="flip__in">
               <span class="flip__face flip__front"><span class="flip__no">01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2s5 4.5 5 9.5a5 5 0 01-10 0c0-2 1-3.5 2-4.5 0 1.8 1 3 2 3 0-3-.5-5 1-8z"/></svg><span class="flip__title">Signature Recipes</span><span class="flip__hint">Tap to flip</span></span>
               <span class="flip__face flip__back"><span class="flip__title">Signature Recipes</span><span class="flip__text">Our crispy fried chicken and house-made chicken pastil, with the recipes and preparation shared with every partner.</span></span></span></button></li>
@@ -505,6 +506,15 @@
               <span class="flip__face flip__front"><span class="flip__no">06</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v3a1 1 0 001 1h2l4 4V6L6 10H4a1 1 0 00-1 1zM15 8a5 5 0 010 8M18 5a9 9 0 010 14"/></svg><span class="flip__title">Marketing Support</span><span class="flip__hint">Tap to flip</span></span>
               <span class="flip__face flip__back"><span class="flip__title">Marketing Support</span><span class="flip__text">Launch promos and social media support to bring your neighbors to the counter from day one.</span></span></span></button></li>
           </ul>
+            <div class="flips-ui">
+              <div class="flips-dots"><button type="button" aria-label="Show card 1"></button><button type="button" aria-label="Show card 2"></button><button type="button" aria-label="Show card 3"></button><button type="button" aria-label="Show card 4"></button><button type="button" aria-label="Show card 5"></button><button type="button" aria-label="Show card 6"></button></div>
+              <div class="flips-nav">
+                <button type="button" class="flips-btn" data-dir="-1" aria-label="Previous card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+                <span class="flips-count" aria-live="polite"><b>01</b> / 06</span>
+                <button type="button" class="flips-btn" data-dir="1" aria-label="Next card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
