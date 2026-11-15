@@ -74,18 +74,26 @@
 
   /* ---------- Active section (nav, overlay, dock) ---------- */
   const spyLinks = $$('a[data-spy]');
-  const spyTargets = [...new Set(spyLinks.map(l => l.getAttribute('href')))].map(h => $(h)).filter(Boolean);
+  // each observed section maps to the link id it should highlight;
+  // the franchise block is split so the inquiry form can highlight "Contact"
+  const spyMap = new Map();
+  [...new Set(spyLinks.map(l => l.getAttribute('href').slice(1)))].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && id !== 'franchise') spyMap.set(el, id);
+  });
+  [$('.fr-intro'), $('#advantage'), $('#journey')].forEach(el => el && spyMap.set(el, 'franchise'));
   const spyIO = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      spyLinks.forEach(l => {
-        const on = l.getAttribute('href') === '#' + en.target.id;
-        l.classList.toggle('is-active', on);
-        on ? l.setAttribute('aria-current', 'true') : l.removeAttribute('aria-current');
-      });
+    const hit = entries.filter(e => e.isIntersecting && spyMap.has(e.target))
+      .sort((x, y) => x.boundingClientRect.height - y.boundingClientRect.height)[0];
+    if (!hit) return;
+    const id = spyMap.get(hit.target);
+    spyLinks.forEach(l => {
+      const on = l.getAttribute('href') === '#' + id;
+      l.classList.toggle('is-active', on);
+      on ? l.setAttribute('aria-current', 'true') : l.removeAttribute('aria-current');
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  spyTargets.forEach(s => spyIO.observe(s));
+  spyMap.forEach((id, el) => spyIO.observe(el));
 
   /* ---------- Hero slider ---------- */
   const hero = $('.hero');
