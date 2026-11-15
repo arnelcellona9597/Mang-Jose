@@ -70,7 +70,7 @@ $errors = [];
 if (mb_strlen($name) < 2)                          $errors[] = 'name';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))    $errors[] = 'email';
 if (mb_strlen($message) < 10)                      $errors[] = 'message';
-$allowedBranches = ['Talomo (Main)', 'Tugbok (Sto. Niño)'];
+$allowedBranches = ['Ecoland (Main)', 'Tugbok (Sto. Niño)'];
 if (!in_array($branch, $allowedBranches, true))    $branch = 'Not specified';
 
 if ($errors) {
