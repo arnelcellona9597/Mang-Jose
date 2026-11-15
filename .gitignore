@@ -1,0 +1,13 @@
+# Local tooling
+.claude/
+.vscode/
+.idea/
+
+# Source photos (optimized copies live in assets/img)
+Raw Images/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*:Zone.Identifier
