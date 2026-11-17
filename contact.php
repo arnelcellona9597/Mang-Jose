@@ -6,8 +6,8 @@
 declare(strict_types=1);
 
 // ====== CONFIGURATION ======
-const MAIL_TO        = 'owner@example.com';              // <-- change to the inbox that should receive messages
-const MAIL_FROM      = 'no-reply@mangjosefriedchicken.com'; // must be an address on your own domain
+const MAIL_TO        = 'sales@mangjosecorner.com';           // inbox that receives franchise inquiries
+const MAIL_FROM      = 'sales@mangjosecorner.com';           // must be a real address on this domain
 const MAIL_SUBJECT   = 'New inquiry from Mang Jose website';
 const MIN_FILL_MS    = 3000;   // reject forms submitted faster than this (bots)
 const RATE_LIMIT_SEC = 30;     // one message per IP per N seconds

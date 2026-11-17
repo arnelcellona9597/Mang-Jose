@@ -11,3 +11,6 @@ Raw Images/
 Thumbs.db
 desktop.ini
 *:Zone.Identifier
+
+# Client preview images
+screenshots/

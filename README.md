@@ -24,11 +24,34 @@ php -S localhost:8000
 
 Then open http://localhost:8000.
 
-## Before going live
+## Live site and deployment
 
-1. In `contact.php`, set `MAIL_TO` (the inbox that receives messages) and `MAIL_FROM` (an address on your domain).
-2. Replace `https://www.mangjosefriedchicken.com/` with the real domain in `index.html`, `robots.txt` and `sitemap.xml`.
-3. The host must support PHP `mail()`, or swap in SMTP.
+The site is live at https://mangjosecorner.com (cPanel hosting, PHP 7.2, LiteSpeed).
+
+Every push to `main` runs `.github/workflows/deploy.yml`:
+
+1. **Checks:** PHP and JavaScript syntax, in-page links, image alt text, structured data, domain/email placeholders and PHP 7.2 compatibility (`.github/scripts/check_site.py`).
+2. **Deploy:** uploads the site to the server over FTPS. Only changed files are sent.
+3. **Smoke test:** confirms the home page, stylesheet and `contact.php` respond on the live domain.
+
+Pull requests are checked but never deployed. A manual run (Actions > Check and deploy > Run workflow) can be a **dry run** that uploads nothing.
+
+### One-time setup (GitHub > Settings > Secrets and variables > Actions)
+
+| Name | Type | Value |
+|---|---|---|
+| `FTP_SERVER` | Secret | `cpanel11wh.jpt1.cloud.z.com` (the host the FTPS certificate is issued for) |
+| `FTP_USERNAME` | Secret | the cPanel FTP account name |
+| `FTP_PASSWORD` | Secret | that account's password |
+| `FTP_DIR` | Variable (optional) | folder to upload into, e.g. `public_html/`. Leave unset if the FTP account already lands in the web folder. |
+
+Never commit passwords to the repository. The form emails are sent with PHP `mail()` from `sales@mangjosecorner.com`, so no mail password is stored anywhere in the code.
+
+### Local preview
+
+```bash
+php -S localhost:8000
+```
 
 ## Branching
 
