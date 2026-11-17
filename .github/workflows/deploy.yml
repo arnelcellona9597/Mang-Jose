@@ -68,7 +68,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          server-dir: ${{ vars.FTP_DIR || './' }}
+          server-dir: ${{ vars.FTP_DIR || secrets.FTP_DIR || './' }}
           local-dir: ./
           dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
           exclude: |
