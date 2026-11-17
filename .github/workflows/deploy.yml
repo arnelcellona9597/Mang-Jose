@@ -1,0 +1,101 @@
+name: Check and deploy
+
+# Every push to main is checked and then deployed to https://mangjosecorner.com
+# Pull requests are only checked. A manual run can be a dry run (nothing uploaded).
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (list what would be uploaded, upload nothing)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    name: Site checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PHP syntax
+        run: php -l contact.php
+
+      - name: JavaScript syntax
+        run: node --check assets/js/main.js
+
+      - name: Site checks (links, images, schema, domain, PHP 7.2 compatibility)
+        run: python3 .github/scripts/check_site.py
+
+  deploy:
+    name: Deploy to live site
+    needs: checks
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make sure the deploy secrets exist
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          missing=0
+          for name in FTP_SERVER FTP_USERNAME FTP_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              echo "::error::GitHub secret $name is not set. Add it under Settings > Secrets and variables > Actions."
+              missing=1
+            fi
+          done
+          exit $missing
+
+      - name: Upload to the server over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ${{ vars.FTP_DIR || './' }}
+          local-dir: ./
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            .claude/**
+            screenshots/**
+            Raw Images/**
+            README.md
+            .gitignore
+
+      - name: Smoke test the live site
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+        run: |
+          set -e
+          site=https://mangjosecorner.com
+          for attempt in 1 2 3 4 5 6; do
+            code=$(curl -s -o /tmp/home.html -w "%{http_code}" "$site/" || true)
+            if [ "$code" = "200" ] && grep -q "Mang Jose" /tmp/home.html; then break; fi
+            echo "Attempt $attempt: home page returned $code, retrying..."; sleep 10
+          done
+          [ "$code" = "200" ] && grep -q "Mang Jose" /tmp/home.html || { echo "::error::Home page is not serving the new site"; exit 1; }
+          echo "Home page OK"
+          css=$(curl -s -o /dev/null -w "%{http_code}" "$site/assets/css/style.css"); [ "$css" = "200" ] || { echo "::error::style.css returned $css"; exit 1; }
+          # contact.php refuses GET with 405, which proves PHP is running there
+          php_code=$(curl -s -o /dev/null -w "%{http_code}" "$site/contact.php"); [ "$php_code" = "405" ] || { echo "::error::contact.php returned $php_code (expected 405)"; exit 1; }
+          www=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" "https://www.mangjosecorner.com/"); echo "www -> $www"
+          echo "Smoke test passed."
