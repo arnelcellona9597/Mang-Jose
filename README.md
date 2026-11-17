@@ -43,7 +43,7 @@ Pull requests are checked but never deployed. A manual run (Actions > Check and 
 | `FTP_SERVER` | Secret | `cpanel11wh.jpt1.cloud.z.com` (the host the FTPS certificate is issued for) |
 | `FTP_USERNAME` | Secret | the cPanel FTP account name |
 | `FTP_PASSWORD` | Secret | that account's password |
-| `FTP_DIR` | Variable (optional) | folder to upload into, e.g. `public_html/`. Leave unset if the FTP account already lands in the web folder. |
+| `FTP_DIR` | Variable or secret | folder to upload into, e.g. `public_html/`. Set to `public_html/` because this FTP account starts in the cPanel home folder. |
 
 Never commit passwords to the repository. The form emails are sent with PHP `mail()` from `sales@mangjosecorner.com`, so no mail password is stored anywhere in the code.
 
@@ -58,3 +58,7 @@ php -S localhost:8000
 - `main`: production
 - `develop`: integration
 - `feature/*`: new work, merged into `develop`, then `develop` into `main`
+
+## Analytics
+
+Google Tag Manager (container `GTM-TJ6JD3X4`) is installed in `index.html`. Configure GA4 and any other tags inside the Tag Manager dashboard, not in the code.
