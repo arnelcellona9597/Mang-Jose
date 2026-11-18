@@ -12,7 +12,11 @@
   /* ---------- Preloader ---------- */
   document.body.classList.add('is-loading');
   const hidePreloader = () => {
-    $('.preloader')?.classList.add('is-done');
+    const pre = $('.preloader');
+    if (pre && pre.isConnected && !pre.classList.contains('is-done')) {
+      pre.classList.add('is-done');
+      setTimeout(() => pre.remove(), 1000);   // gone for good once it has faded out
+    }
     document.body.classList.remove('is-loading');
     $('.dock')?.classList.add('is-ready');
   };
@@ -25,20 +29,20 @@
   /* ---------- Header: scrolled / hide on scroll down ---------- */
   const header = $('.site-header');
   const progress = $('.scroll-progress');
-  let lastY = 0, ticking = false;
+  let lastY = 0, ticking = false, vh = innerHeight, pageMax = 1, lastProg = -1, scrollPos = window.scrollY;
   const onScroll = () => {
-    const sy = window.scrollY;
+    const sy = scrollPos;
     header.classList.toggle('is-scrolled', sy > 40);
     const menuOpen = document.body.classList.contains('is-menu-open');
     header.classList.toggle('is-hidden', !menuOpen && sy > 600 && sy > lastY + 4);
     if (sy < lastY - 4) header.classList.remove('is-hidden');
     lastY = sy;
-    const max = doc.scrollHeight - innerHeight;
-    progress.style.transform = `scaleX(${max > 0 ? sy / max : 0})`;
+    const prog = Math.round(clamp(sy / pageMax, 0, 1) * 1000) / 1000;
+    if (prog !== lastProg) { lastProg = prog; progress.style.transform = `scaleX(${prog})`; }
     parallax();
     ticking = false;
   };
-  window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+  window.addEventListener('scroll', () => { scrollPos = window.scrollY; if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
 
   /* ---------- Mobile full-screen menu ---------- */
   const menuBtn = $('.menu-btn'), overlay = $('#menu-overlay'), brand = $('.brand');
@@ -233,43 +237,84 @@
     stepEls.forEach(s => stepIO.observe(s));
   }
 
-  /* ---------- Parallax + footer lift ---------- */
+  /* ---------- Scroll-driven effects ----------
+     Element positions are measured once (and again when the layout changes), so scrolling
+     itself never forces the browser to recalculate layout. */
   const parEls = $$('[data-parallax]');
   const parX = $$('[data-parallax-x]');
   const foot = $('.foot');
   const stack = $('.fr-stack'), stage = $('.fr-stage'), steps = $('.steps');
+  const useParallax = finePointer && !reduced;       // decorative parallax only where there is a mouse
+  const absBox = el => { const r = el.getBoundingClientRect(); return { top: r.top + window.scrollY, h: r.height }; };
+  const geo = {};
+  const measure = () => {
+    vh = innerHeight; pageMax = Math.max(1, doc.scrollHeight - vh);
+    if (useParallax) {
+      parEls.forEach(el => { const t = el.style.translate; el.style.translate = 'none'; el._g = absBox(el); el.style.translate = t; });
+      parX.forEach(el => { el._g = absBox(el.parentElement); });
+    }
+    if (stage) geo.stage = absBox(stage);
+    if (steps) geo.steps = absBox(steps);
+    if (foot) geo.foot = absBox(foot);
+  };
+  const put = (el, name, val) => {
+    const c = el._p || (el._p = {});
+    if (c[name] === val) return;
+    c[name] = val; el.style.setProperty(name, val);
+  };
   function parallax() {
     if (reduced) return;
-    const vh = innerHeight;
-    parEls.forEach(el => {
-      const r = el.getBoundingClientRect();
-      const c = r.top + r.height / 2 - vh / 2;
-      el.style.translate = `0 ${c * +el.dataset.parallax}px`;
-    });
-    parX.forEach(el => {
-      const r = el.parentElement.getBoundingClientRect();
-      el.style.setProperty('--px', `${(r.top - vh / 2) * +el.dataset.parallaxX}px`);
-    });
-    if (stack && stage) {
-      const r = stage.getBoundingClientRect();
-      stack.style.setProperty('--sp', clamp((vh - r.top) / (vh + r.height), 0, 1).toFixed(3));
+    const sy = scrollPos;
+    if (useParallax) {
+      parEls.forEach(el => {
+        const g = el._g; if (!g) return;
+        const c = g.top - sy + g.h / 2 - vh / 2;
+        if (Math.abs(c) > vh * 1.6) return;
+        const v = (c * +el.dataset.parallax).toFixed(1) + 'px';
+        if (el._v !== v) { el._v = v; el.style.translate = `0 ${v}`; }
+      });
+      parX.forEach(el => {
+        const g = el._g; if (!g) return;
+        const c = g.top - sy - vh / 2;
+        if (Math.abs(c) > vh * 2) return;
+        put(el, '--px', `${(c * +el.dataset.parallaxX).toFixed(1)}px`);
+      });
     }
-    if (steps) {
-      const r = steps.getBoundingClientRect();
-      steps.style.setProperty('--jp', clamp((vh * 0.62 - r.top) / r.height, 0, 1).toFixed(3));
+    if (stack && geo.stage) {
+      const g = geo.stage, top = g.top - sy;
+      if (top < vh && top + g.h > 0) put(stack, '--sp', clamp((vh - top) / (vh + g.h), 0, 1).toFixed(3));
     }
-    if (foot) {
-      const r = foot.getBoundingClientRect();
-      const p = clamp((vh - r.top) / r.height, 0, 1);
-      foot.style.setProperty('--fp', p.toFixed(3));
-      foot.style.setProperty('--cut', `${((1 - clamp((p - .3) / .55, 0, 1)) * 100).toFixed(1)}%`);
+    if (steps && geo.steps) {
+      const g = geo.steps, top = g.top - sy;
+      if (top < vh * 1.2 && top + g.h > -vh * 0.2) put(steps, '--jp', clamp((vh * 0.62 - top) / g.h, 0, 1).toFixed(3));
+    }
+    if (foot && geo.foot) {
+      const g = geo.foot, top = g.top - sy;
+      if (top < vh * 1.2) {
+        const p = clamp((vh - top) / g.h, 0, 1);
+        put(foot, '--fp', p.toFixed(3));
+        put(foot, '--cut', `${((1 - clamp((p - .3) / .55, 0, 1)) * 100).toFixed(1)}%`);
+      }
     }
   }
+  measure();
+  let measureTimer;
+  const remeasure = () => { clearTimeout(measureTimer); measureTimer = setTimeout(() => { measure(); parallax(); }, 120); };
+  window.addEventListener('resize', remeasure);
+  window.addEventListener('load', remeasure);
+  document.fonts?.ready.then(remeasure);
+  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
   onScroll();
+
+  /* Sections that are off-screen pause their looping animations (see .is-live in the CSS) */
+  const liveIO = new IntersectionObserver(entries => entries.forEach(en => en.target.classList.toggle('is-live', en.isIntersecting)), { rootMargin: '120px 0px' });
+  $$('main section, .foot').forEach(s => liveIO.observe(s));
 
   /* ---------- Ticker: scroll-reactive ---------- */
   const tracks = $$('.ticker__track');
-  if (tracks.length && !reduced) {
+  if (tracks.length && !reduced && !finePointer) {
+    $('.ticker').classList.add('ticker--css');
+  } else if (tracks.length && !reduced) {
     const T = tracks.map((el, i) => ({ el, dir: i % 2 ? 1 : -1, base: i % 2 ? 36 : 54, x: null, w: 0 }));
     const measure = () => T.forEach(t => {
       const w = t.el.scrollWidth / 2;
@@ -281,26 +326,26 @@
     window.addEventListener('resize', measure);
     window.addEventListener('load', measure);
     document.fonts?.ready.then(measure);
-    let last = 0, prevY = scrollY, sv = 0, skew = 0, running = false;
+    let last = 0, prevY = scrollPos, sv = 0, skew = 0, running = false;
     const tick = (now) => {
       if (!running) return;
       const dt = Math.min(.05, (now - last) / 1000); last = now;
-      const dy = scrollY - prevY; prevY = scrollY;
+      const dy = scrollPos - prevY; prevY = scrollPos;
       sv += (dy - sv) * .12;
       const boost = Math.min(Math.abs(sv) * 22, 520);
-      skew += (clamp(-sv * .3, -9, 9) - skew) * .1;
+      skew = finePointer ? skew + (clamp(-sv * .3, -9, 9) - skew) * .1 : 0;
       T.forEach(t => {
         if (!t.w) return;
         t.x += t.dir * (t.base + boost) * dt;
         if (t.dir < 0 && t.x <= -t.w) t.x += t.w;
         if (t.dir > 0 && t.x >= 0) t.x -= t.w;
-        t.el.style.transform = `translate3d(${t.x.toFixed(1)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
+        t.el.style.transform = finePointer ? `translate3d(${t.x.toFixed(1)}px,0,0) skewX(${skew.toFixed(2)}deg)` : `translate3d(${t.x.toFixed(1)}px,0,0)`;
       });
       requestAnimationFrame(tick);
     };
     new IntersectionObserver(([en]) => {
       running = en.isIntersecting;
-      if (running) { last = performance.now(); prevY = scrollY; requestAnimationFrame(tick); }
+      if (running) { last = performance.now(); prevY = scrollPos; requestAnimationFrame(tick); }
     }, { rootMargin: '100px 0px' }).observe($('.ticker'));
   }
 

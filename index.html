@@ -284,7 +284,7 @@
     <section class="ticker" aria-label="Highlights">
       <p class="sr-only">Fried chicken from 40 pesos per piece, chicken pastil 160 pesos per bottle, cooked fresh daily in Davao City.</p>
       <a href="#about" class="ticker__badge" aria-label="Scroll to About section">
-        <svg class="ticker__ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring-a" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#ring-a" textLength="272" lengthAdjust="spacing">FRESH DAILY • CRISPY • GOLDEN • </textPath></text></svg>
+        <span class="spin spin--ticker"><svg class="ticker__ring" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="ring-a" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#ring-a" textLength="272" lengthAdjust="spacing">FRESH DAILY • CRISPY • GOLDEN • </textPath></text></svg></span>
         <svg class="ticker__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
       <div class="ticker__gold" aria-hidden="true">
@@ -298,10 +298,10 @@
       <div class="container about__grid">
         <div class="about__media reveal" data-reveal="left">
           <figure class="about__img about__img--main tilt">
-            <img src="assets/img/store-front.webp" alt="Mang Jose Fried Chicken Corner storefront at night with its glowing sign" width="1000" height="1333" loading="lazy">
+            <img src="assets/img/store-front.webp" alt="Mang Jose Fried Chicken Corner storefront at night with its glowing sign" width="1000" height="1333" loading="lazy" decoding="async">
           </figure>
           <figure class="about__img about__img--float tilt" data-parallax="-0.12">
-            <img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken with two servings of rice topped with chicken pastil" width="1200" height="721" loading="lazy">
+            <img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken with two servings of rice topped with chicken pastil" width="1200" height="721" loading="lazy" decoding="async">
           </figure>
           <div class="about__badge" data-parallax="0.08">
             <strong>2</strong><span>Branches<br>in Davao</span>
@@ -332,7 +332,7 @@
       <div class="container signature__grid">
         <div class="signature__stage" aria-hidden="true">
           <div class="orbit"><span></span><span></span><span></span></div>
-          <img src="assets/img/drumstick-cut.webp" alt="" width="800" height="800" class="signature__drum" loading="lazy">
+          <img src="assets/img/drumstick-cut.webp" alt="" width="800" height="800" class="signature__drum" loading="lazy" decoding="async">
         </div>
         <div class="signature__copy">
           <p class="eyebrow reveal">The Signature</p>
@@ -354,7 +354,7 @@
         <div class="sl-wrap" role="region" aria-roledescription="carousel" aria-label="Menu">
           <ul class="products sl-track reveal-stagger" tabindex="0" aria-label="Menu items. Swipe or use the arrow keys to browse.">
           <li class="product tilt">
-            <div class="product__img"><img src="assets/img/hero-meal.webp" alt="Crispy fried chicken served with steamed rice" width="1536" height="864" loading="lazy"></div>
+            <div class="product__img"><img src="assets/img/hero-meal.webp" alt="Crispy fried chicken served with steamed rice" width="1536" height="864" loading="lazy" decoding="async"></div>
             <div class="product__body">
               <span class="product__tag">Best Seller</span>
               <h3>Fried Chicken + Rice</h3>
@@ -364,7 +364,7 @@
             <span class="product__shine" aria-hidden="true"></span>
           </li>
           <li class="product tilt">
-            <div class="product__img"><img src="assets/img/combo-pastil.webp" alt="Fried chicken with rice topped with chicken pastil" width="900" height="900" loading="lazy"></div>
+            <div class="product__img"><img src="assets/img/combo-pastil.webp" alt="Fried chicken with rice topped with chicken pastil" width="900" height="900" loading="lazy" decoding="async"></div>
             <div class="product__body">
               <span class="product__tag">Combo</span>
               <h3>Chicken + Pastil + Rice</h3>
@@ -374,7 +374,7 @@
             <span class="product__shine" aria-hidden="true"></span>
           </li>
           <li class="product tilt">
-            <div class="product__img"><img src="assets/img/drumstick.webp" alt="A single crispy fried chicken drumstick" width="900" height="900" loading="lazy"></div>
+            <div class="product__img"><img src="assets/img/drumstick.webp" alt="A single crispy fried chicken drumstick" width="900" height="900" loading="lazy" decoding="async"></div>
             <div class="product__body">
               <span class="product__tag">Ala Carte</span>
               <h3>Fried Chicken</h3>
@@ -384,7 +384,7 @@
             <span class="product__shine" aria-hidden="true"></span>
           </li>
           <li class="product tilt">
-            <div class="product__img"><img src="assets/img/pastil-jars.webp" alt="Three jars of Mang Jose Special Chicken Pastil, Original and Spicy" width="413" height="735" loading="lazy" class="contain"></div>
+            <div class="product__img"><img src="assets/img/pastil-jars.webp" alt="Three jars of Mang Jose Special Chicken Pastil, Original and Spicy" width="413" height="735" loading="lazy" decoding="async" class="contain"></div>
             <div class="product__body">
               <span class="product__tag">Take Home</span>
               <h3>Chicken Pastil</h3>
@@ -415,18 +415,18 @@
         </header>
         <div class="sl-wrap" role="region" aria-roledescription="carousel" aria-label="Gallery">
           <div class="gallery__grid sl-track reveal-stagger" tabindex="0" aria-label="Gallery photos. Swipe or use the arrow keys to browse.">
-          <button class="g-item g-item--tall" data-full="assets/img/macro.webp"><img src="assets/img/macro.webp" alt="Close-up of crunchy fried chicken skin" width="800" height="1200" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/chicken-pastil-rice.webp"><img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken and pastil rice plate" width="1200" height="721" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/calamansi.webp"><img src="assets/img/calamansi.webp" alt="Fried chicken with soy-calamansi dip and chili" width="900" height="600" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/hero-chicken.webp"><img src="assets/img/hero-chicken.webp" alt="Pile of golden fried chicken" width="1536" height="864" loading="lazy"></button>
-          <button class="g-item g-item--tall" data-full="assets/img/honey.webp"><img src="assets/img/honey.webp" alt="Fried chicken basket with honey drizzle" width="800" height="1200" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/hero-pastil.webp"><img src="assets/img/hero-pastil.webp" alt="Chicken pastil jar with rice" width="1536" height="864" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/combo-pastil.webp"><img src="assets/img/combo-pastil.webp" alt="Chicken, rice and pastil, top view" width="900" height="900" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/pastil-spoon.webp"><img src="assets/img/pastil-spoon.webp" alt="Spoonful of chicken pastil over steamed rice" width="900" height="600" loading="lazy"></button>
-          <button class="g-item g-item--tall" data-full="assets/img/store-front.webp"><img src="assets/img/store-front.webp" alt="Tugbok branch storefront at night" width="1000" height="1333" loading="lazy"></button>
-          <button class="g-item g-item--tall" data-full="assets/img/pastil-jars.webp"><img src="assets/img/pastil-jars.webp" alt="Stack of Special Chicken Pastil jars" width="413" height="735" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/hero-meal.webp"><img src="assets/img/hero-meal.webp" alt="Fried chicken and rice meal" width="1536" height="864" loading="lazy"></button>
-          <button class="g-item" data-full="assets/img/drumstick-rack.webp"><img src="assets/img/drumstick-rack.webp" alt="Fresh fried drumsticks resting on a rack" width="900" height="600" loading="lazy"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/macro.webp"><img src="assets/img/macro.webp" alt="Close-up of crunchy fried chicken skin" width="800" height="1200" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/chicken-pastil-rice.webp"><img src="assets/img/chicken-pastil-rice.webp" alt="Fried chicken and pastil rice plate" width="1200" height="721" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/calamansi.webp"><img src="assets/img/calamansi.webp" alt="Fried chicken with soy-calamansi dip and chili" width="900" height="600" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/hero-chicken.webp"><img src="assets/img/hero-chicken.webp" alt="Pile of golden fried chicken" width="1536" height="864" loading="lazy" decoding="async"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/honey.webp"><img src="assets/img/honey.webp" alt="Fried chicken basket with honey drizzle" width="800" height="1200" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/hero-pastil.webp"><img src="assets/img/hero-pastil.webp" alt="Chicken pastil jar with rice" width="1536" height="864" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/combo-pastil.webp"><img src="assets/img/combo-pastil.webp" alt="Chicken, rice and pastil, top view" width="900" height="900" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/pastil-spoon.webp"><img src="assets/img/pastil-spoon.webp" alt="Spoonful of chicken pastil over steamed rice" width="900" height="600" loading="lazy" decoding="async"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/store-front.webp"><img src="assets/img/store-front.webp" alt="Tugbok branch storefront at night" width="1000" height="1333" loading="lazy" decoding="async"></button>
+          <button class="g-item g-item--tall" data-full="assets/img/pastil-jars.webp"><img src="assets/img/pastil-jars.webp" alt="Stack of Special Chicken Pastil jars" width="413" height="735" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/hero-meal.webp"><img src="assets/img/hero-meal.webp" alt="Fried chicken and rice meal" width="1536" height="864" loading="lazy" decoding="async"></button>
+          <button class="g-item" data-full="assets/img/drumstick-rack.webp"><img src="assets/img/drumstick-rack.webp" alt="Fresh fried drumsticks resting on a rack" width="900" height="600" loading="lazy" decoding="async"></button>
         </div>
           <div class="sl-ui sl-ui--bar">
             <div class="sl-bar" aria-hidden="true"><i></i></div>
@@ -449,7 +449,7 @@
         </header>
         <div class="branches__grid reveal-stagger">
           <article class="branch tilt">
-            <div class="branch__img"><img src="assets/img/branch-ecoland.webp" alt="Ecoland main branch with its lit Mang Jose sign" width="382" height="510" loading="lazy"></div>
+            <div class="branch__img"><img src="assets/img/branch-ecoland.webp" alt="Ecoland main branch with its lit Mang Jose sign" width="382" height="510" loading="lazy" decoding="async"></div>
             <div class="branch__body">
               <span class="branch__no">01</span>
               <h3>Ecoland <small>Main Branch</small></h3>
@@ -458,7 +458,7 @@
             </div>
           </article>
           <article class="branch tilt">
-            <div class="branch__img"><img src="assets/img/store-night.webp" alt="Tugbok branch seen from across the street" width="1000" height="1333" loading="lazy" style="object-position:50% 62%"></div>
+            <div class="branch__img"><img src="assets/img/store-night.webp" alt="Tugbok branch seen from across the street" width="1000" height="1333" loading="lazy" decoding="async" style="object-position:50% 62%"></div>
             <div class="branch__body">
               <span class="branch__no">02</span>
               <h3>Tugbok <small>Sto. Niño</small></h3>
@@ -494,9 +494,9 @@
           <div class="fr-stage reveal" aria-hidden="true">
             <div class="fr-stage__tilt tilt">
               <div class="fr-stack">
-                <figure class="fr-card fr-card--c"><img src="assets/img/hero-meal.webp" alt="" width="1536" height="864" loading="lazy"></figure>
-                <figure class="fr-card fr-card--b"><img src="assets/img/branch-ecoland.webp" alt="" width="382" height="510" loading="lazy"></figure>
-                <figure class="fr-card fr-card--a"><img src="assets/img/store-front.webp" alt="" width="1000" height="1333" loading="lazy"></figure>
+                <figure class="fr-card fr-card--c"><img src="assets/img/hero-meal.webp" alt="" width="1536" height="864" loading="lazy" decoding="async"></figure>
+                <figure class="fr-card fr-card--b"><img src="assets/img/branch-ecoland.webp" alt="" width="382" height="510" loading="lazy" decoding="async"></figure>
+                <figure class="fr-card fr-card--a"><img src="assets/img/store-front.webp" alt="" width="1000" height="1333" loading="lazy" decoding="async"></figure>
                 <div class="coin">
                   <div class="coin__spin">
                     <span class="coin__face coin__face--front"><img src="assets/img/logo.webp" alt="" width="480" height="302"></span>
@@ -670,7 +670,7 @@
           <p class="foot__sub">Bring Mang Jose to your neighborhood.</p>
         </div>
         <a class="spin-cta magnetic" href="#inquire" aria-label="Start a franchise inquiry">
-          <svg class="spin-cta__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="ring-b" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#ring-b" textLength="384" lengthAdjust="spacing">FRANCHISE • INQUIRE NOW • OWN A CORNER • </textPath></text></svg>
+          <span class="spin spin--cta"><svg class="spin-cta__ring" viewBox="0 0 160 160" aria-hidden="true"><defs><path id="ring-b" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs><text><textPath href="#ring-b" textLength="384" lengthAdjust="spacing">FRANCHISE • INQUIRE NOW • OWN A CORNER • </textPath></text></svg></span>
           <span class="spin-cta__core"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
         </a>
       </div>
@@ -695,7 +695,7 @@
 
         <div class="foot__side">
           <div class="foot__brand">
-            <img src="assets/img/logo.webp" alt="Mang Jose Fried Chicken Corner" width="480" height="302" loading="lazy">
+            <img src="assets/img/logo.webp" alt="Mang Jose Fried Chicken Corner" width="480" height="302" loading="lazy" decoding="async">
             <p>Crispy fried chicken &amp; chicken pastil, served with love in Davao City.</p>
           </div>
           <nav class="foot__nav" aria-label="Footer">
@@ -722,7 +722,7 @@
       <div class="container foot__bottom">
         <p>© <span id="year">2026</span> Mang Jose Fried Chicken Corner. All rights reserved.</p>
         <a href="#top" class="to-top magnetic" aria-label="Back to top">
-          <svg class="to-top__ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#ring-c" textLength="234" lengthAdjust="spacing">BACK TO TOP • BACK TO TOP • </textPath></text></svg>
+          <span class="spin spin--top"><svg class="to-top__ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring-c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#ring-c" textLength="234" lengthAdjust="spacing">BACK TO TOP • BACK TO TOP • </textPath></text></svg></span>
           <svg class="to-top__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         </a>
       </div>
