@@ -584,6 +584,9 @@ main { position: relative; z-index: 2; overflow-x: clip; background: var(--bg); 
 
 .foot__bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 22px; padding-bottom: 28px; border-top: 1px solid var(--line); }
 .foot__bottom p { margin: 0; color: var(--muted); font-size: .86rem; }
+.foot__legal { display: grid; gap: 6px; }
+.foot__credit a { color: var(--gold, #e6b655); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: opacity .2s; }
+.foot__credit a:hover, .foot__credit a:focus-visible { opacity: .75; }
 @media (max-width: 860px) { .foot__bottom { padding-bottom: calc(112px + env(safe-area-inset-bottom)); } }
 .to-top { --bx: 0px; --by: 0px; position: relative; flex-shrink: 0; width: 72px; height: 72px; display: grid; place-items: center; border-radius: 50%; color: var(--gold-2); background: radial-gradient(circle at 30% 24%, #2b1c10, #0a0604 72%); border: 1px solid var(--line); transform: translate(var(--bx), var(--by)); transition: transform .5s var(--ease), box-shadow .4s; }
 .to-top:hover { box-shadow: 0 0 40px rgba(242,212,138,.5); }
